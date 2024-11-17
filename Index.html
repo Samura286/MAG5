@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Store - Merch and Go</title>
+    <link rel="stylesheet" type="text/css" href="CSS/CSS.css">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #0f0f1a;
+            font-family: Arial, sans-serif;
+
+        }
+        header {
+            background-color: #272731;
+            color: white;
+            padding: 10px 0;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 50px;
+
+        }
+        header img {
+            width: 150px;
+        }
+        section
+        {
+            text-align: center;
+        }
+        h1
+{
+color: whitesmoke;
+}
+h2
+{
+
+}
+.hcontact
+{
+color: whitesmoke;
+}
+summary
+{
+color: whitesmoke;
+}
+p
+{
+color: whitesmoke;
+font: sans-serif;
+font-size: 20px;
+
+}
+.input {
+    font-family: "SF Pro";
+    max-width: 1900px;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1.5px solid #000;
+    border-radius: 0.5rem;
+    box-shadow: 2.5px 3px 0 #000;
+    outline: none;
+    transition: ease 0.25s;
+  flex: 1;
+  margin: 0 20px;
+  padding: 0.8em;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+    }
+    .input:focus {
+        box-shadow: 5.5px 7px 0 black;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 70px auto 0 auto;
+            padding: 20px;
+        }
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .product-item {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding: 15px;
+            text-align: center;
+            width: 24%;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+        .product-item img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease-in-out;
+        }
+        .product-item h2 {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .product-item p {
+            color: #777;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        .product-item .price {
+            font-size: 1.5em;
+            color: #0011ff;
+            margin: 10px 0;
+        }
+        .product-item a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #d46159;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .product-item a:hover {
+            background: #1a4b36;
+        }
+        footer {
+            background-color: #1b2736;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            width: 100%;
+        }
+        .social-media a {
+            margin: 0 10px;
+            color: white;
+        }
+        .social-media svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+        /* FAQ Section Styles */
+        #about {
+            background-color: #0f0f1a;
+            color: #FFFFFF;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+        .faq-container h1 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+        .faq-item {
+            border-top: 1px solid #333;
+            padding: 15px 0;
+        }
+        .faq-item:last-child {
+            border-bottom: 1px solid #333;
+        }
+        .faq-item summary {
+            font-size: 1.1em;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-item summary:hover {
+            color: #BBBBBB;
+        }
+        .faq-item p {
+            margin: 10px 0 0;
+            font-size: 0.95em;
+        }
+
+        /* Card Styles */
+.card {
+    position: relative;
+    background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: background 0.6s ease, transform 0.6s ease; /* Aumentamos la duración y especificamos solo los atributos relevantes */
+    width: 300px;
+    height: 400px;
+}
+
+.card:hover {
+    background: white; /* Fondo blanco al pasar el mouse */
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.6s ease; /* Aumentamos la duración para la imagen */
+}
+
+.card__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    color: white;
+    text-align: center;
+    transition: opacity 0.2s ease; /* Transición más suave para la opacidad */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.card:hover img {
+    transform: scale(1.1); /* Efecto de escala en la imagen */
+}
+
+.card:hover .card__content {
+    opacity: 1; /* Asegura que el contenido sea visible cuando se pasa el mouse */
+}
+
+.card__title {
+    font-family: Trends;
+    font-size:35px !important;
+    font-weight: bold;
+    margin: 0px 0;
+    -webkit-text-stroke: 1.7px black;
+}
+
+.card__description {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+}  
+
+
+.card .price {
+    font-family: Nightfall;
+    font-size: 35px;
+    color: white ;
+    margin-top: 10px;
+    -webkit-text-stroke: 1.5px white !important;
+    text-shadow: 
+        3px 3px 0 black,
+       -3px -3px 0 black,
+        3px -3px 0 black,
+       -3px 3px 0 black;
+       -webkit-text-stroke: 0.7px white;
+}
+
+.card .button {
+    padding: 10px 20px;
+    background-color: #d46159;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.card .button:hover {
+    background-color: #1a4b36;
+}
+h3
+{
+ font-family: 'Nightfall';  
+    font-size: 28px;
+    color: #FF5733;
+    text-shadow: 
+        2px 2px 0 white,
+       -2px -2px 0 #FF5733,
+        2px -2px 0 #FF5733,
+       -2px 2px 0 black;
+       -webkit-text-stroke: 0.7px #ff0f7b;
+       border-right: 30px;
+       margin-left: 20px;
+       margin-right: 80px;
+}
+@font-face {
+    font-family: 'Nightfall';
+    src: url('fonts/Nightfall.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Trends';
+    src: url('fonts/Trends.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+.categories-button {
+  --bg: #000;
+  --hover-bg: #1D3DF2;
+  --hover-text: #000;
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid var(--bg);
+  border-radius: 4px;
+  padding: 0.8em 2em;
+  background: var(--bg);
+  transition: 0.2s;
+}
+
+.categories-button:hover {
+  color: var(--hover-text);
+  transform: translate(-0.25rem, -0.25rem);
+  background: var(--hover-bg);
+  box-shadow: 0.25rem 0.25rem var(--bg);
+}
+
+.categories-button:active {
+  transform: translate(0);
+  box-shadow: none;
+}
+        /* Aquí va el CSS que proporcionaste para el botón */
+        .categories-button2 {
+            --bg: #000;
+            --hover-bg: #1D3DF2;
+            --hover-text: #000;
+            color: #fff;
+            cursor: pointer;
+            border: 1px solid var(--bg);
+            border-radius: 4px;
+            padding: 0.8em 2em;
+            background: var(--bg);
+            transition: 0.2s;
+            margin-right: 80px;
+            text-decoration: none;
+        }
+
+        .categories-button2:hover {
+            color: var(--hover-text);
+            transform: translate(-0.25rem, -0.25rem);
+            background: var(--hover-bg);
+            box-shadow: 0.25rem 0.25rem var(--bg);
+        }
+
+        .categories-button2:active {
+            transform: translate(0);
+            box-shadow: none;
+        }
+        .categories-button3 
+{
+    align-items: center;
+  --bg: #000;
+  --hover-bg: #1D3DF2;
+  --hover-text: #000;
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid var(--bg);
+  border-radius: 5px;
+  padding: 1.8em 2.2em;
+  background: var(--bg);
+  transition: 0.2s;
+}
+
+.categories-button3:hover 
+{
+  color: var(--hover-text);
+  transform: translate(-0.25rem, -0.25rem);
+  background: var(--hover-bg);
+  box-shadow: 0.25rem 0.25rem var(--bg);
+}
+
+.categories-button3:active 
+{
+  transform: translate(0);
+  box-shadow: none;
+}
+.button-view {
+  padding: 15px 20px;
+  border: none;
+  outline: none;
+  background-color: #151515;
+  color: #eee;
+  border-radius: 7px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease-out;
+}
+
+.button-view:hover {
+  transform: translateY(-3px);
+}
+
+.button-view-span {
+  color: #aaa;
+}
+.redes {
+  width: 220px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.redes a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  transition: all 0.2s ease-in-out;
+}
+
+.redes a svg {
+  width: 30px;
+  fill: #ffffff;
+}
+
+.redes .discord {
+  background-color: rgb(0, 60, 255);
+  border-radius: 0 0 10px 0;
+}
+
+.redes .instagram {
+  background: linear-gradient(45deg, #833ab4, #fd1d1d, #f56040);
+  border-radius: 0 10px 0 0;
+}
+
+.redes .github {
+  background-color: rgb(24, 22, 22);
+}
+
+.redes .twitter {
+  background-color: #000000;
+  border-radius: 0 10px 0 0;
+}
+
+.redes .facebook {
+  background-color: #006aff;
+}
+
+.redes a:hover {
+  width: 130%;
+  border-radius: 0 10px 10px 0;
+}
+.hidden {
+    display: none;
+}
+
+.cart-modal {
+    position: fixed;
+    top: 10%;
+    right: 10%;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.cart-items {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.cart-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.close-cart-button {
+    background: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.close-cart-button:hover {
+    background: #d32f2f;
+}
+.PCart
+{
+color: black;
+}
+.bin-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
+  border-radius: 15px;
+  background-color: rgb(255, 95, 95);
+  cursor: pointer;
+  border: 3px solid rgb(255, 201, 201);
+  transition-duration: 0.3s;
+}
+.bin-bottom {
+  width: 15px;
+}
+.bin-top {
+  width: 17px;
+  transform-origin: right;
+  transition-duration: 0.3s;
+}
+.bin-button:hover .bin-top {
+  transform: rotate(45deg);
+}
+.bin-button:hover {
+  background-color: rgb(255, 0, 0);
+}
+.bin-button:active {
+  transform: scale(0.9);
+}
+.left-buttons {
+  display: flex;
+  gap: 20px;
+}
+.right-buttons 
+{
+  display: flex;
+  gap: 20px;
+}
+.category-filter {
+  display: flex;
+  padding: 6px;
+  justify-content: center;
+  flex-wrap: wrap; /* Permite que los botones se acomoden en varias líneas si hay muchos */
+  gap: 10px; /* Espaciado entre los botones */
+  margin: 20px 0; /* Espaciado vertical adicional */
+}
+
+    </style>
+</head>
+<body>
+<header>
+  <h3>Merch and go</h3>
+  <div class="left-buttons">
+    <a href="#" class="categories-button">Catalog</a>
+  </div>
+  <input placeholder="Search for Transistor T-shirt" class="input" name="text" type="email" />
+  <div class="right-buttons">
+    <a href="HTML/Account.html" class="categories-button">Account</a>
+    <a href="#" class="categories-button2">Cart</a>
+  </div>
+</header>
+    <div class="container">
+        <h1>Featured Products</h1>
+        <!-- Filter Section -->
+<div class="category-filter">
+    <label for="category" style="display: block; margin-bottom: 10px;"></label>
+
+    <button class="categories-button3" onclick="filterProducts('home')">Home</button>
+    <button class="categories-button3" onclick="filterProducts('apparel')">Apparel</button>
+    <button class="categories-button3" onclick="filterProducts('book')">Books</button>
+    <button class="categories-button3" onclick="filterProducts('games')">Games</button>
+    <button class="categories-button3" onclick="filterProducts('art')">Art</button>
+    <button class="categories-button3" onclick="filterProducts('music')">Music</button>
+    <button class="categories-button3" onclick="filterProducts('accessories')">Accessories</button>
+    <button class="categories-button3" onclick="filterProducts('')">All Products</button>
+    <!-- For resetting the filter -->
+</div>
+
+        <div class="product-list">
+            <!-- Product 1 -->
+            <div class="product-item card" data-category="home">
+                <img src="IMG/Gustabotaza.png" alt="Gustabo Mug">
+                <div class="card__content">
+                    <h2 class="card__title">Gustabo Mug</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$14.99</div>
+                    <button class="button-view">Add to cart</button>
+                </div>
+            </div>
+                <!-- Product 2 -->
+            <div class="product-item card" data-category="home">
+                <img src="IMG/UndertalePCH.png" alt="UndertalePCH">
+                <div class="card__content">
+                    <h2 class="card__title">Undertale Stationery Pouch</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$14.99</div>
+                    <button class="button-view">Add to cart</button>
+                </div>
+            </div>
+            <!-- Product 3 -->
+            <div class="product-item card" data-category="home">
+                <img src="IMG/StardewBag.png" alt="SatrdewBag">
+                <div class="card__content">
+                    <h2 class="card__title">Stardew Valley Pierre's General Store Tote Bag</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$11.99</div>
+                    <button class="button-view">Add to cart</button>
+                </div>
+            </div>
+                        <!-- Product 4 -->
+            <div class="product-item card" data-category="home">
+                <img src="IMG/DownBelowBag.png" alt="DownBelowBag">
+                <div class="card__content">
+                    <h2 class="card__title">Down Below Tote Bag (B&N) </h2>
+                    <p class="card__description"></p>
+                    <div class="price">$11.99</div>
+                    <button class="button-view">Add to cart</button>
+                </div>
+            </div>
+            <!-- Product 5 -->
+            <div class="product-item card" data-category="home">
+                <img src="IMG/OmoriBento.png" alt="OmoriBento">
+                <div class="card__content">
+                    <h2 class="card__title">Mari's Picnic Bento Box </h2>
+                    <p class="card__description"></p>
+                    <div class="price">$21.99</div>
+                    <button class="button-view">Add to cart</button>
+                </div>
+            </div>
+            <!-- Product 6 -->
+            <div class="product-item card" data-category="home">
+                <img src="IMG/PizzaCup.png" alt="PizzaCup">
+                <div class="card__content">
+                    <h2 class="card__title">Peppino's Pizza Cup</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$21.99</div>
+                    <button class="button-view">Add to cart</button>
+                </div>
+            </div>
+            <!-- Product 7 -->
+            <div class="product-item card" data-category="home">
+                <img src="IMG/UndertaleBlanket.png" alt="UndertaleBlanket">
+                <div class="card__content">
+                    <h2 class="card__title">Friends and Foes Throw Blanket</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$29.99</div>
+                    <button class="button-view">Add to cart</button>
+                </div>
+            </div>
+                        <!-- Product 8 -->
+            <div class="product-item card" data-category="home">
+                <img src="IMG/DeadBGP.png" alt="DeadBGP">
+                <div class="card__content">
+                    <h2 class="card__title">Death by Glamour Floating Pen</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$9.99</div>
+                    <button class="button-view">Add to cart</button>
+                </div>
+            </div>
+            <!-- Product 9 -->
+            <div class="product-item card" data-category="home">
+                <img src="IMG/WatermelonP.png" alt="WatermelonP">
+                <div class="card__content">
+                    <h2 class="card__title">Watermelon Pouch and Lanyard</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$18.99</div>
+                    <button class="button-view">Add to cart</button>
+                </div>
+            </div>
+            <!-- Product 10 -->
+            <div class="product-item card" data-category="home">
+                <img src="IMG/RuinTowel.png" alt="RuinTowel">
+                <div class="card__content">
+                    <h2 class="card__title">Ruins Face Towel</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$11.99</div>
+                    <button class="button-view">Add to cart</button>
+                </div>
+            </div>
+            <!-- Product 11 -->
+            <div class="product-item card" data-category="home">
+                <img src="IMG/Grill.png" alt="Grill">
+                <div class="card__content">
+                    <h2 class="card__title">What a Grill Apron</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$21.99</div>
+                    <button class="button-view">Add to cart</button>
+                </div>
+            </div> 
+            <!-- Product 12 -->
+            <div class="product-item card" data-category="home">
+                <img src="IMG/Nabs.png" alt="Nabs">
+                <div class="card__content">
+                    <h2 class="card__title">Napstablook Lamp</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$28.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+            <!-- Product 13 -->
+            <div class="product-item card" data-category="apparel">
+                <img src="IMG/camisaTransistor.png" alt="camisaTransistor">
+                <div class="card__content">
+                    <h2 class="card__title">Transistor 10th Anniversary T-shirt</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$24.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+    <!-- Product 14 -->
+            <div class="product-item card" data-category="apparel">
+                <img src="IMG/DeadBGS.png" alt="DeadBGS">
+                <div class="card__content">
+                    <h2 class="card__title">Death by Glamour (Sweet 16 Edition)</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$24.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+     <!-- Product 15 -->
+            <div class="product-item card" data-category="apparel">
+                <img src="IMG/CamisaCOTL.png" alt="CamisaCOTL">
+                <div class="card__content">
+                    <h2 class="card__title">The Lamb T-shirt</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$24.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+    <!-- Product 16 -->
+            <div class="product-item card" data-category="apparel">
+                <img src="IMG/DominusStar.png" alt="DominusStar">
+                <div class="card__content">
+                    <h2 class="card__title">Dominus Stars Castlevania designs, screenprinted.</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$24.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+        <!-- Product 17 -->
+            <div class="product-item card" data-category="apparel">
+                <img src="IMG/Agency.png" alt="Agency">
+                <div class="card__content">
+                    <h2 class="card__title">Anything Agency</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$24.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+    <!-- Product 18 -->
+            <div class="product-item card" data-category="apparel">
+                <img src="IMG/StrayS.png" alt="StrayS">
+                <div class="card__content">
+                    <h2 class="card__title">Stray Antics</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$24.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+        <!-- Product 19 -->
+            <div class="product-item card" data-category="apparel">
+                <img src="IMG/CelesteSK.png" alt="CelesteSK">
+                <div class="card__content">
+                    <h2 class="card__title">Constellation Climb Skirt</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$28.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+            <!-- Product 20 -->
+            <div class="product-item card" data-category="apparel">
+                <img src="IMG/StardewSK.png" alt="StardewSK">
+                <div class="card__content">
+                    <h2 class="card__title">Cindersap Forest Skirt</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$28.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                <!-- Product 21 -->
+            <div class="product-item card" data-category="apparel">
+                <img src="IMG/HallowPants.png" alt="HallowPants">
+                <div class="card__content">
+                    <h2 class="card__title">Hallownest Pajama Pants</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$22.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                    <!-- Product 22 -->
+            <div class="product-item card" data-category="apparel">
+                <img src="IMG/SansH.png" alt="SansH">
+                <div class="card__content">
+                    <h2 class="card__title">Sans Hoodie</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$22.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                <!-- Product 23 -->
+            <div class="product-item card" data-category="apparel">
+                <img src="IMG/ParanoiaH.png" alt="ParanoiaH">
+                <div class="card__content">
+                    <h2 class="card__title">Paranoia Pullover Hoodie</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$29.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+             <!-- Product 24 -->
+            <div class="product-item card" data-category="apparel">
+                <img src="IMG/SGHoodie.png" alt="SGHoodie">
+                <div class="card__content">
+                    <h2 class="card__title">Supergiant Games 15th Anniversary Zip-Up Hoodie</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$29.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+    <!-- Product 25 -->
+            <div class="product-item card" data-category="games">
+                <img src="IMG/OmoriC.png" alt="OmoriC">
+                <div class="card__content">
+                    <h2 class="card__title">OMORI Collector's Edition</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$89.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+    <!-- Product 26 -->
+            <div class="product-item card" data-category="games">
+                <img src="IMG/TunicG.png" alt="TunicG">
+                <div class="card__content">
+                    <h2 class="card__title">Tunic Deluxe Edition</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$79.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+    <!-- Product 27 -->
+            <div class="product-item card" data-category="games">
+                <img src="IMG/CelesteG.png" alt="CelesteG">
+                <div class="card__content">
+                    <h2 class="card__title">Celeste Collector's Edition</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$89.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+    <!-- Product 28 -->
+            <div class="product-item card" data-category="games">
+                <img src="IMG/UndertaleG.png" alt="UndertaleG">
+                <div class="card__content">
+                    <h2 class="card__title">Undertale Collector's Edition</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$79.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+        <!-- Product 29 -->
+            <div class="product-item card" data-category="games">
+                <img src="IMG/HKC.png" alt="HKC">
+                <div class="card__content">
+                    <h2 class="card__title">UHollow Knight Collector's Edition</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$79.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+    <!-- Product 30 -->
+            <div class="product-item card" data-category="games">
+                <img src="IMG/StardewVG.png" alt="StardewVG">
+                <div class="card__content">
+                    <h2 class="card__title">Stardew Valley Collector's Edition</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$99.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+        <!-- Product 31 -->
+            <div class="product-item card" data-category="games">
+                <img src="IMG/Bugnax.png" alt="Bugnax">
+                <div class="card__content">
+                    <h2 class="card__title">Bugsnax Physical Game</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$29.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+            <!-- Product 32 -->
+            <div class="product-item card" data-category="games">
+                <img src="IMG/HKStandart.png" alt="HKStandart">
+                <div class="card__content">
+                    <h2 class="card__title">Hollow Knight Standard Edition</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$39.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                <!-- Product 33 -->
+            <div class="product-item card" data-category="games">
+                <img src="IMG/UTStandart.png" alt="UTStandart">
+                <div class="card__content">
+                    <h2 class="card__title">UNDERTALE Standard Edition</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$39.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                    <!-- Product 34 -->
+            <div class="product-item card" data-category="games">
+                <img src="IMG/OmoriST.png" alt="OmoriST">
+                <div class="card__content">
+                    <h2 class="card__title">OMORI for Nintendo Switch™ and PlayStation 4</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$39.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                    <!-- Product 34 -->
+            <div class="product-item card" data-category="games">
+                <img src="IMG/CelesteST.png" alt="CelesteST">
+                <div class="card__content">
+                    <h2 class="card__title">Celeste Standard Edition</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$39.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                <!-- Product 35 -->
+            <div class="product-item card" data-category="games">
+                <img src="IMG/BABA.png" alt="BABA">
+                <div class="card__content">
+                    <h2 class="card__title">Baba Is You for Nintendo Switch™</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$35.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+        <!-- Product 36 -->
+            <div class="product-item card" data-category="book">
+                <img src="IMG/CelesteB.png" alt="CelesteB">
+                <div class="card__content">
+                    <h2 class="card__title">Celeste Reflection Art Album and Journal Set</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$29.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+            <!-- Product 37 -->
+            <div class="product-item card" data-category="book">
+                <img src="IMG/UndertalePS.png" alt="UndertalePS">
+                <div class="card__content">
+                    <h2 class="card__title">Undertale Complete Piano Score Book</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$29.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>   
+         <!-- Product 38 -->
+            <div class="product-item card" data-category="book">
+                <img src="IMG/LibroHK.png" alt="LibroHK">
+                <div class="card__content">
+                    <h2 class="card__title">Hollow Knight Art Book</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$29.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+             <!-- Product 39 -->
+            <div class="product-item card" data-category="book">
+                <img src="IMG/StardewPiano.png" alt="StardewPiano">
+                <div class="card__content">
+                    <h2 class="card__title">Stardew Valley Piano Collections</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$29.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+            <!-- Product 40 -->
+            <div class="product-item card" data-category="book">
+                <img src="IMG/CelestePS.png" alt="CelestePS">
+                <div class="card__content">
+                    <h2 class="card__title">Celeste Piano Collections</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$19.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+            <!-- Product 41 -->
+            <div class="product-item card" data-category="book">
+                <img src="IMG/SlimeB.png" alt="SlimeB">
+                <div class="card__content">
+                    <h2 class="card__title">Slime Rancher Slimepedia Guidebook</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$29.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+            <!-- Product 42 -->
+            <div class="product-item card" data-category="book">
+                <img src="IMG/StardewVB.png" alt="StardewVB">
+                <div class="card__content">
+                    <h2 class="card__title">Stardew Valley Cross Stitch Guide</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$29.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+            <!-- Product 43 -->
+            <div class="product-item card" data-category="book">
+                <img src="IMG/MotherCB.png" alt="MotherCB">
+                <div class="card__content">
+                    <h2 class="card__title">Mother's Cookbook</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$29.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+            <!-- Product 44 -->
+            <div class="product-item card" data-category="book">
+                <img src="IMG/HKPiano.png" alt="HKPiano">
+                <div class="card__content">
+                    <h2 class="card__title">Hollow Knight Piano Collections Sheet Music Book</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$29.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                <!-- Product 45 -->
+            <div class="product-item card" data-category="book">
+                <img src="IMG/StardewComic.png" alt="StardewComic">
+                <div class="card__content">
+                    <h2 class="card__title">Stardew Valley Before the Farmer Comic</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$29.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+             <!-- Product 44 -->
+            <div class="product-item card" data-category="book">
+                <img src="IMG/DeltaPiano.png" alt="DeltaPiano">
+                <div class="card__content">
+                    <h2 class="card__title">DELTARUNE Incomplete Piano Score Book</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$29.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                 <!-- Product 45 -->
+            <div class="product-item card" data-category="book">
+                <img src="IMG/UndertaleSB.png" alt="UndertaleSB">
+                <div class="card__content">
+                    <h2 class="card__title">UNDERTALE Cross Stitch Book</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$29.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                <!-- Product 46 -->
+            <div class="product-item card" data-category="art">
+                <img src="IMG/AceART.png" alt="AceART">
+                <div class="card__content">
+                    <h2 class="card__title">Ace Attorney Picnic at Gourd Lake</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$59.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                <!-- Product 47 -->
+            <div class="product-item card" data-category="art">
+                <img src="IMG/Abyssal.png" alt="Abyssal">
+                <div class="card__content">
+                    <h2 class="card__title">World of Horror Abyssal Beacon</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$59.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+            <!-- Product 48 -->
+            <div class="product-item card" data-category="art">
+                <img src="IMG/Hades3ART.png" alt="Hades3ART">
+                <div class="card__content">
+                    <h2 class="card__title">Hades Underworld Triptych Poster Set</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$89.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+             <!-- Product 49 -->
+            <div class="product-item card" data-category="art">
+                <img src="IMG/Gnome.png" alt="Gnome">
+                <div class="card__content">
+                    <h2 class="card__title">Pizza Tower Gnome Forest Poster</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$69.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+            <!-- Product 50 -->
+            <div class="product-item card" data-category="art">
+                <img src="IMG/ACEART222.png" alt="ACEART222">
+                <div class="card__content">
+                    <h2 class="card__title">Ace Attorney Classy-Action Lawsuit</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$69.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+            <!-- Product 51 -->
+            <div class="product-item card" data-category="art">
+                <img src="IMG/ENAART.png" alt="ENAART">
+                <div class="card__content">
+                    <h2 class="card__title">ENA Lenticular Poster</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$59.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+            <!-- Product 52 -->
+            <div class="product-item card" data-category="art">
+                <img src="IMG/ELDENSET.png" alt="ELDENSET">
+                <div class="card__content">
+                    <h2 class="card__title">ELDEN RING Legacy Dungeon Print Set</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$99.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+            <!-- Product 53 -->
+            <div class="product-item card" data-category="art">
+                <img src="IMG/DKART.png" alt="DKART">
+                <div class="card__content">
+                    <h2 class="card__title">DARK SOULS Undead Asylum</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$79.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+            <!-- Product 54 -->
+            <div class="product-item card" data-category="art">
+                <img src="IMG/DKART2.png" alt="DKART2">
+                <div class="card__content">
+                    <h2 class="card__title">DARK SOULS Painted World</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$79.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+            <!-- Product 55 -->
+            <div class="product-item card" data-category="art">
+                <img src="IMG/OKAMI.png" alt="OKAMI">
+                <div class="card__content">
+                    <h2 class="card__title">Okami Banished Evil</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$79.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+             <!-- Product 56 -->
+            <div class="product-item card" data-category="art">
+                <img src="IMG/KALIMBA.png" alt="KALIMBA">
+                <div class="card__content">
+                    <h2 class="card__title">KALIMBA</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$49.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+            <!-- Product 57 -->
+            <div class="product-item card" data-category="art">
+                <img src="IMG/CGODS.png" alt="CGODS">
+                <div class="card__content">
+                    <h2 class="card__title">Hades Chthonic Gods Poster</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$59.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                <!-- Product 58 -->
+            <div class="product-item card" data-category="music">
+                <img src="IMG/PZVINIL.png" alt="PZVINIL">
+                <div class="card__content">
+                    <h2 class="card__title">Pizza Tower Vinyl Soundtrack</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$39.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                <!-- Product 59 -->
+            <div class="product-item card" data-category="music">
+                <img src="IMG/SNOWVINIL.png" alt="SNOWVINIL">
+                <div class="card__content">
+                    <h2 class="card__title">Snowboard Kids Vinyl Soundtrack</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$39.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                <!-- Product 60 -->
+            <div class="product-item card" data-category="music">
+                <img src="IMG/SH3VINIL.png" alt="SH3VINIL">
+                <div class="card__content">
+                    <h2 class="card__title">Silent Hill 3 Vinyl Soundtrack</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$39.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                <!-- Product 61 -->
+            <div class="product-item card" data-category="music">
+                <img src="IMG/SKATUNE.png" alt="SKATUNE">
+                <div class="card__content">
+                    <h2 class="card__title">Skatune Network: You Are Filled With Determination Vinyl </h2>
+                    <p class="card__description"></p>
+                    <div class="price">$49.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                <!-- Product 62 -->
+            <div class="product-item card" data-category="music">
+                <img src="IMG/SHINVINIL.png" alt="SHINVINIL">
+                <div class="card__content">
+                    <h2 class="card__title">Shin Megami Tensei V Vinyl Soundtrack Box Set</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$49.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                 <!-- Product 63 -->
+            <div class="product-item card" data-category="music">
+                <img src="IMG/DELTARUNEC2VINIL.png" alt="DELTARUNEC2VINIL">
+                <div class="card__content">
+                    <h2 class="card__title">DELTARUNE Chapter 2 Vinyl Soundtrack</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$39.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+             <!-- Product 64 -->
+            <div class="product-item card" data-category="music">
+                <img src="IMG/YUMENIKKIVINIL.png" alt="YUMENIKKIVINIL">
+                <div class="card__content">
+                    <h2 class="card__title">Yume Nikki Original Soundtrack Vinyl</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$39.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+             <!-- Product 65 -->
+            <div class="product-item card" data-category="music">
+                <img src="IMG/HADESCD.png" alt="HADESCD">
+                <div class="card__content">
+                    <h2 class="card__title">Hades Original Soundtrack CD</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$39.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+            <!-- Product 66 -->
+            <div class="product-item card" data-category="music">
+                <img src="IMG/UTCD.png" alt="UTCD">
+                <div class="card__content">
+                    <h2 class="card__title">UNDERTALE Piano Collections CD Artbook: Volume 1</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$39.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+            <!-- Product 67 -->
+            <div class="product-item card" data-category="music">
+                <img src="IMG/CELESTEVINIL.png" alt="CELESTEVINIL">
+                <div class="card__content">
+                    <h2 class="card__title">Celeste Vinyl Slipmat</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$39.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+            <!-- Product 68 -->
+            <div class="product-item card" data-category="music">
+                <img src="IMG/CELESTEVINILSET.png" alt="CELESTEVINILSET">
+                <div class="card__content">
+                    <h2 class="card__title">Celeste Complete Vinyl Soundtrack Box Set </h2>
+                    <p class="card__description"></p>
+                    <div class="price">$39.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+            <!-- Product 69 -->
+            <div class="product-item card" data-category="music">
+                <img src="IMG/ONESHOTVINIL.png" alt="ONESHOTVINIL">
+                <div class="card__content">
+                    <h2 class="card__title">OneShot Vinyl Soundtrack</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$49.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                <!-- Product 70 -->
+            <div class="product-item card" data-category="accessories">
+                <img src="IMG/LANCERSLEEP.png" alt="LANCERSLEEP">
+                <div class="card__content">
+                    <h2 class="card__title">Lancer Sleep Mask</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$19.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                    <!-- Product 71 -->
+            <div class="product-item card" data-category="accessories">
+                <img src="IMG/PELICANSHEET.png" alt="PELICANSHEET">
+                <div class="card__content">
+                    <h2 class="card__title">Pelican Town Sticker Sheet</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$9.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                    <!-- Product 72 -->
+            <div class="product-item card" data-category="accessories">
+                <img src="IMG/NABSCLIP.png" alt="NABSCLIP">
+                <div class="card__content">
+                    <h2 class="card__title">Napstablook Earphone Cable Clip</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$12.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                    <!-- Product 73 -->
+            <div class="product-item card" data-category="accessories">
+                <img src="IMG/COTLPIN.png" alt="COTLPIN">
+                <div class="card__content">
+                    <h2 class="card__title">Commandment Stone Pin</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$9.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                        <!-- Product 74 -->
+            <div class="product-item card" data-category="accessories">
+                <img src="IMG/ENAPIN.png" alt="ENAPIN">
+                <div class="card__content">
+                    <h2 class="card__title">ENA Pin</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$9.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                        <!-- Product 75 -->
+            <div class="product-item card" data-category="accessories">
+                <img src="IMG/ENASHEET.png" alt="ENASHEET">
+                <div class="card__content">
+                    <h2 class="card__title">ENA Sticker Sheet Set</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$9.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                        <!-- Product 76 -->
+            <div class="product-item card" data-category="accessories">
+                <img src="IMG/LIFEJAM.png" alt="LIFEJAM">
+                <div class="card__content">
+                    <h2 class="card__title">Life Jam Guy Keychain</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$9.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                 <!-- Product 77 -->
+            <div class="product-item card" data-category="accessories">
+                <img src="IMG/HATPIN.png" alt="HATPIN">
+                <div class="card__content">
+                    <h2 class="card__title">Scooter Spinning Pin Set</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$7.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                    <!-- Product 78 -->
+            <div class="product-item card" data-category="accessories">
+                <img src="IMG/ACEPIN.png" alt="ACEPIN">
+                <div class="card__content">
+                    <h2 class="card__title">Interjection! Pin Se</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$9.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                    <!-- Product 79 -->
+            <div class="product-item card" data-category="accessories">
+                <img src="IMG/UTAC.png" alt="UTAC">
+                <div class="card__content">
+                    <h2 class="card__title">UNDERTALE Folding Reusable Bag</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$9.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                     <!-- Product 80 -->
+            <div class="product-item card" data-category="accessories">
+                <img src="IMG/DOG.png" alt="DOG">
+                <div class="card__content">
+                    <h2 class="card__title">Annoying Dog Pooch Pouch</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$9.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+                 <!-- Product 81 -->
+            <div class="product-item card" data-category="accessories">
+                <img src="IMG/NYX.png" alt="NYX">
+                <div class="card__content">
+                    <h2 class="card__title">Nyx pin</h2>
+                    <p class="card__description"></p>
+                    <div class="price">$7.99</div>
+                    <button class="button-view">Add to cart</button>
+        </div>
+    </div>
+</div>
+    </div>
+        <!-- Carrito -->
+<div id="cart-modal" class="cart-modal hidden">
+    <h2>Your Cart</h2>
+    <div id="cart-items" class="cart-items">
+        <!-- Los productos se añadirán dinámicamente aquí -->
+    </div>
+    <button id="close-cart" class="close-cart-button">Close</button>
+</div>
+
+    <script type="text/javascript">
+    // Variables
+const cartButton = document.querySelector('.categories-button2'); // Botón "Cart"
+const cartModal = document.getElementById('cart-modal'); // Modal del carrito
+const closeCartButton = document.getElementById('close-cart'); // Botón "Close"
+const cartItemsContainer = document.getElementById('cart-items'); // Contenedor de los productos
+const addToCartButtons = document.querySelectorAll('.button-view'); // Botones "Agregar al carrito"
+
+// Carrito
+let cart = [];
+
+// Mostrar/Ocultar el carrito
+cartButton.addEventListener('click', () => {
+    cartModal.classList.toggle('hidden'); // Alterna la visibilidad del carrito
+});
+
+closeCartButton.addEventListener('click', () => {
+    cartModal.classList.add('hidden'); // Cierra el carrito
+});
+
+// Añadir al carrito
+addToCartButtons.forEach(button => {
+    button.addEventListener('click', event => {
+        const productItem = event.target.closest('.product-item'); // Encuentra el contenedor del producto
+        const productName = productItem.querySelector('.card__title').innerText; // Nombre del producto
+        const productPrice = productItem.querySelector('.price').innerText; // Precio del producto
+        const productImage = productItem.querySelector('img').src; // Imagen del producto
+
+        // Crea un objeto de producto
+        const product = {
+            id: Date.now(), // Genera un ID único basado en el tiempo
+            name: productName,
+            price: productPrice,
+            image: productImage,
+            quantity: 1, // Cantidad inicial
+        };
+
+        addToCart(product); // Añade el producto al carrito
+    });
+});
+
+// Función para añadir productos al carrito
+function addToCart(product) {
+    const existingProduct = cart.find(item => item.name === product.name);
+
+    if (existingProduct) {
+        existingProduct.quantity++; // Incrementa la cantidad si ya existe
+    } else {
+        cart.push(product); // Añade el nuevo producto al carrito
+    }
+
+    renderCart(); // Actualiza el carrito
+}
+
+// Función para eliminar productos del carrito
+function removeFromCart(productId) {
+    cart = cart.filter(item => item.id !== productId); // Filtra los productos por ID
+    renderCart(); // Actualiza el carrito
+}
+
+// Renderizar el carrito
+function renderCart() {
+    cartItemsContainer.innerHTML = ''; // Limpia el contenido del carrito
+
+    cart.forEach(product => {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+
+        cartItem.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <div>
+                <p class ="PCart">${product.name}</p>
+                <pclass ="PCart">${product.price}</p>
+                <pclass ="PCart">Quantity: ${product.quantity}</p>
+            </div>
+            <button class="bin-button" onclick="removeFromCart(${product.id})">
+  <svg
+    class="bin-top"
+    viewBox="0 0 39 7"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <line y1="5" x2="39" y2="5" stroke="white" stroke-width="4"></line>
+    <line
+      x1="12"
+      y1="1.5"
+      x2="26.0357"
+      y2="1.5"
+      stroke="white"
+      stroke-width="3"
+    ></line>
+  </svg>
+  <svg
+    class="bin-bottom"
+    viewBox="0 0 33 39"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <mask id="path-1-inside-1_8_19" fill="white">
+      <path
+        d="M0 0H33V35C33 37.2091 31.2091 39 29 39H4C1.79086 39 0 37.2091 0 35V0Z"
+      ></path>
+    </mask>
+    <path
+      d="M0 0H33H0ZM37 35C37 39.4183 33.4183 43 29 43H4C-0.418278 43 -4 39.4183 -4 35H4H29H37ZM4 43C-0.418278 43 -4 39.4183 -4 35V0H4V35V43ZM37 0V35C37 39.4183 33.4183 43 29 43V35V0H37Z"
+      fill="white"
+      mask="url(#path-1-inside-1_8_19)"
+    ></path>
+    <path d="M12 6L12 29" stroke="white" stroke-width="4"></path>
+    <path d="M21 6V29" stroke="white" stroke-width="4"></path>
+  </svg>
+</button>
+        `;
+
+        cartItemsContainer.appendChild(cartItem); // Añade el producto al DOM
+    });
+}
+
+</script>
+
+
+    <!-- FAQ Section -->
+    <section id="about">
+        <div class="faq-container">
+            <h1>Frequently Asked Questions (FAQs)</h1>
+            <div class="faq-item">
+                <details>
+                    <summary>How can I make an exchange or return?</summary>
+                    <p>To make an exchange or return, contact us through our customer service form or call our support number.</p>
+                </details>
+            </div>
+            <div class="faq-item">
+                <details>
+                    <summary>What payment methods are accepted?</summary>
+                    <p>We accept credit cards, debit cards, and PayPal payments.</p>
+                </details>
+            </div>
+            <div class="faq-item">
+                <details>
+                    <summary>How long does shipping take?</summary>
+                    <p>Standard shipping takes between 3 and 5 business days.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+    <script>
+        function filterProducts(category) {
+    const products = document.querySelectorAll('.product-item');
+    
+    products.forEach(product => {
+        const productCategory = product.getAttribute('data-category');
+        
+        // Show the product if the category matches, or if the category is empty (All Products)
+        if (category === "" || productCategory === category) {
+            product.style.display = "inline-block";
+        } else {
+            product.style.display = "none";
+        }
+
+    });
+}
+
+    </script>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="hcontact">Contact</h2>
+        <p>Mobile Phone: (555) 123-4567<br>Email: contact@merchandgo.com</p>
+        <div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5702.427253880117!2d-116.59570842792711!3d31.80637376942418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d88e3a8c83f15b%3A0xf2bda7a9596864a7!2sCBTis%2041!5e0!3m2!1ses!2smx!4v1731098601439!5m2!1ses!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        
+    </section>
+<div class="redes">
+
+  <a class="twitter" href="#">
+    <svg
+      fill="white"
+      class="svgIcon"
+      xmlns="http://www.w3.org/2000/svg"
+      width="25px"
+      height="25px"
+      viewBox="0 0 564 564"
+    >
+      <path
+        d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"
+      ></path>
+    </svg>
+  </a>
+
+  <a class="facebook" href="#">
+    <svg
+      class="icon icons8-Facebook-Filled"
+      style="null"
+      viewBox="0 0 50 50"
+      height="25px"
+      width="25px"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M40,0H10C4.486,0,0,4.486,0,10v30c0,5.514,4.486,10,10,10h30c5.514,0,10-4.486,10-10V10C50,4.486,45.514,0,40,0z M39,17h-3 c-2.145,0-3,0.504-3,2v3h6l-1,6h-5v20h-7V28h-3v-6h3v-3c0-4.677,1.581-8,7-8c2.902,0,6,1,6,1V17z"
+      ></path>
+    </svg>
+  </a>
+
+  <a class="discord" href="#"
+    ><svg
+      height="25px"
+      width="25px"
+      viewBox="0 0 48 48"
+      xmlns="http://www.w3.org/2000/svg"
+      class="discord"
+    >
+      <path
+        d="M40,12c0,0-4.585-3.588-10-4l-0.488,0.976C34.408,10.174,36.654,11.891,39,14c-4.045-2.065-8.039-4-15-4s-10.955,1.935-15,4c2.346-2.109,5.018-4.015,9.488-5.024L18,8c-5.681,0.537-10,4-10,4s-5.121,7.425-6,22c5.162,5.953,13,6,13,6l1.639-2.185C13.857,36.848,10.715,35.121,8,32c3.238,2.45,8.125,5,16,5s12.762-2.55,16-5c-2.715,3.121-5.857,4.848-8.639,5.815L33,40c0,0,7.838-0.047,13-6C45.121,19.425,40,12,40,12z M17.5,30c-1.933,0-3.5-1.791-3.5-4c0-2.209,1.567-4,3.5-4s3.5,1.791,3.5,4C21,28.209,19.433,30,17.5,30z M30.5,30c-1.933,0-3.5-1.791-3.5-4c0-2.209,1.567-4,3.5-4s3.5,1.791,3.5,4C34,28.209,32.433,30,30.5,30z"
+      ></path>
+    </svg>
+  </a>
+</div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>Merch and Go LLC<br>Contact us!<br>
+        <a href="#">about us</a> | <a href="#">Privacy policy</a> | <a href="#">Return conditions</a> | <a href="#">Conditions of purchase</a>
+        </p>
+        <div class="social-media">
+            <a href="#" target="_blank">Discord chat</a>
+            <a href="#" target="_blank">Facebook</a>
+            <a href="#" target="_blank">Twitter</a>
+        </div>
+    </footer>
+</body>
+</html>
