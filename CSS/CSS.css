@@ -1,0 +1,801 @@
+ <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #0f0f1a;
+            font-family: Arial, sans-serif;
+
+        }
+        header {
+            background-color: #272731;
+            color: white;
+            padding: 10px 0;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 50px;
+
+        }
+        header img {
+            width: 150px;
+        }
+        section
+        {
+            text-align: center;
+        }
+        h1
+{
+color: whitesmoke;
+}
+h2
+{
+
+}
+.hcontact
+{
+color: whitesmoke;
+}
+summary
+{
+color: whitesmoke;
+}
+p
+{
+color: whitesmoke;
+font: sans-serif;
+font-size: 20px;
+
+}
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 20px;
+            text-align: center;
+        }
+        .search-bar input[type="text"] {
+            padding: 8px;
+            width: 80%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 70px auto 0 auto;
+            padding: 20px;
+        }
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .product-item {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding: 15px;
+            text-align: center;
+            width: 24%;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+        .product-item img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease-in-out;
+        }
+        .product-item h2 {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .product-item p {
+            color: #777;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        .product-item .price {
+            font-size: 1.5em;
+            color: #0011ff;
+            margin: 10px 0;
+        }
+        .product-item a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #d46159;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .product-item a:hover {
+            background: #1a4b36;
+        }
+        footer {
+            background-color: #1b2736;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            width: 100%;
+        }
+        .social-media a {
+            margin: 0 10px;
+            color: white;
+        }
+        .social-media svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+        /* FAQ Section Styles */
+        #about {
+            background-color: #0f0f1a;
+            color: #FFFFFF;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+        .faq-container h1 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+        .faq-item {
+            border-top: 1px solid #333;
+            padding: 15px 0;
+        }
+        .faq-item:last-child {
+            border-bottom: 1px solid #333;
+        }
+        .faq-item summary {
+            font-size: 1.1em;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-item summary:hover {
+            color: #BBBBBB;
+        }
+        .faq-item p {
+            margin: 10px 0 0;
+            font-size: 0.95em;
+        }
+
+        /* Card Styles */
+.card {
+    position: relative;
+    background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: background 0.6s ease, transform 0.6s ease; /* Aumentamos la duración y especificamos solo los atributos relevantes */
+    width: 300px;
+    height: 500px;
+}
+
+.card:hover {
+    background: white; /* Fondo blanco al pasar el mouse */
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease; /* Aumentamos la duración para la imagen */
+}
+
+.card__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    color: white;
+    text-align: center;
+    transition: opacity 0.2s ease; /* Transición más suave para la opacidad */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.card:hover img {
+    transform: scale(1.1); /* Efecto de escala en la imagen */
+}
+
+.card:hover .card__content {
+    opacity: 1; /* Asegura que el contenido sea visible cuando se pasa el mouse */
+}
+
+.card__title {
+    font-family: Trends;
+    font-size:35px !important;
+    font-weight: bold;
+    margin: 0px 0;
+    -webkit-text-stroke: 1.7px black;
+}
+
+.card__description {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+}  
+
+
+.card .price {
+    font-family: Nightfall;
+    font-size: 35px;
+    color: white ;
+    margin-top: 10px;
+    -webkit-text-stroke: 1.5px white !important;
+    text-shadow: 
+        3px 3px 0 black,
+       -3px -3px 0 black,
+        3px -3px 0 black,
+       -3px 3px 0 black;
+       -webkit-text-stroke: 0.7px white;
+}
+
+.card .button {
+    padding: 10px 20px;
+    background-color: #d46159;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.card .button:hover {
+    background-color: #1a4b36;
+}
+h3
+{
+ font-family: 'Nightfall';  
+    font-size: 28px;
+    color: #FF5733;
+    text-shadow: 
+        2px 2px 0 white,
+       -2px -2px 0 #FF5733,
+        2px -2px 0 #FF5733,
+       -2px 2px 0 black;
+       -webkit-text-stroke: 0.7px #ff0f7b;
+       border-right: 30px;
+       margin-left: 20px;
+       margin-right: 80px;
+}
+@font-face {
+    font-family: 'Nightfall';
+    src: url('fonts/Nightfall.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Trends';
+    src: url('fonts/Trends.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+.categories-button {
+  --bg: #000;
+  --hover-bg: #1D3DF2;
+  --hover-text: #000;
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid var(--bg);
+  border-radius: 4px;
+  padding: 0.8em 2em;
+  background: var(--bg);
+  transition: 0.2s;
+
+}
+
+.categories-button:hover {
+  color: var(--hover-text);
+  transform: translate(-0.25rem, -0.25rem);
+  background: var(--hover-bg);
+  box-shadow: 0.25rem 0.25rem var(--bg);
+}
+
+.categories-button:active {
+  transform: translate(0);
+  box-shadow: none;
+}
+.categories-button2 {
+  --bg: #000;
+  --hover-bg: #1D3DF2;
+  --hover-text: #000;
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid var(--bg);
+  border-radius: 4px;
+  padding: 0.8em 2em;
+  background: var(--bg);
+  transition: 0.2s;
+  margin-right: 80px;
+text-decoration: none;
+}
+
+.categories-button2:hover {
+  color: var(--hover-text);
+  transform: translate(-0.25rem, -0.25rem);
+  background: var(--hover-bg);
+  box-shadow: 0.25rem 0.25rem var(--bg);
+}
+
+.categories-button2:active {
+  transform: translate(0);
+  box-shadow: none;
+}
+.button-view {
+  padding: 15px 20px;
+  border: none;
+  outline: none;
+  background-color: #151515;
+  color: #eee;
+  border-radius: 7px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease-out;
+}
+
+.button-view:hover {
+  transform: translateY(-3px);
+}
+
+.button-view-span {
+  color: #aaa;
+}
+.redes {
+  width: 220px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.redes a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  transition: all 0.2s ease-in-out;
+}
+
+.redes a svg {
+  width: 30px;
+  fill: #ffffff;
+}
+
+.redes .discord {
+  background-color: rgb(0, 60, 255);
+  border-radius: 0 0 10px 0;
+}
+
+.redes .instagram {
+  background: linear-gradient(45deg, #833ab4, #fd1d1d, #f56040);
+  border-radius: 0 10px 0 0;
+}
+
+.redes .github {
+  background-color: rgb(24, 22, 22);
+}
+
+.redes .twitter {
+  background-color: #000000;
+  border-radius: 0 10px 0 0;
+}
+
+.redes .facebook {
+  background-color: #006aff;
+}
+
+.redes a:hover {
+  width: 130%;
+  border-radius: 0 10px 10px 0;
+}
+ <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #0f0f1a;
+            font-family: Arial, sans-serif;
+
+        }
+        header {
+            background-color: #272731;
+            color: white;
+            padding: 10px 0;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 50px;
+
+        }
+        header img {
+            width: 150px;
+        }
+        section
+        {
+            text-align: center;
+        }
+        h1
+{
+color: whitesmoke;
+}
+h2
+{
+
+}
+.hcontact
+{
+color: whitesmoke;
+}
+summary
+{
+color: whitesmoke;
+}
+p
+{
+color: whitesmoke;
+font: sans-serif;
+font-size: 20px;
+
+}
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 20px;
+            text-align: center;
+        }
+        .search-bar input[type="text"] {
+            padding: 8px;
+            width: 80%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 70px auto 0 auto;
+            padding: 20px;
+        }
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .product-item {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding: 15px;
+            text-align: center;
+            width: 24%;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+        .product-item img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease-in-out;
+        }
+        .product-item h2 {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .product-item p {
+            color: #777;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        .product-item .price {
+            font-size: 1.5em;
+            color: #0011ff;
+            margin: 10px 0;
+        }
+        .product-item a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #d46159;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .product-item a:hover {
+            background: #1a4b36;
+        }
+        footer {
+            background-color: #1b2736;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            width: 100%;
+        }
+        .social-media a {
+            margin: 0 10px;
+            color: white;
+        }
+        .social-media svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+        /* FAQ Section Styles */
+        #about {
+            background-color: #0f0f1a;
+            color: #FFFFFF;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+        .faq-container h1 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+        .faq-item {
+            border-top: 1px solid #333;
+            padding: 15px 0;
+        }
+        .faq-item:last-child {
+            border-bottom: 1px solid #333;
+        }
+        .faq-item summary {
+            font-size: 1.1em;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-item summary:hover {
+            color: #BBBBBB;
+        }
+        .faq-item p {
+            margin: 10px 0 0;
+            font-size: 0.95em;
+        }
+
+        /* Card Styles */
+.card {
+    position: relative;
+    background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: background 0.6s ease, transform 0.6s ease; /* Aumentamos la duración y especificamos solo los atributos relevantes */
+    width: 300px;
+    height: 500px;
+}
+
+.card:hover {
+    background: white; /* Fondo blanco al pasar el mouse */
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease; /* Aumentamos la duración para la imagen */
+}
+
+.card__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    color: white;
+    text-align: center;
+    transition: opacity 0.2s ease; /* Transición más suave para la opacidad */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.card:hover img {
+    transform: scale(1.1); /* Efecto de escala en la imagen */
+}
+
+.card:hover .card__content {
+    opacity: 1; /* Asegura que el contenido sea visible cuando se pasa el mouse */
+}
+
+.card__title {
+    font-family: Trends;
+    font-size:35px !important;
+    font-weight: bold;
+    margin: 0px 0;
+    -webkit-text-stroke: 1.7px black;
+}
+
+.card__description {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+}  
+
+
+.card .price {
+    font-family: Nightfall;
+    font-size: 35px;
+    color: white ;
+    margin-top: 10px;
+    -webkit-text-stroke: 1.5px white !important;
+    text-shadow: 
+        3px 3px 0 black,
+       -3px -3px 0 black,
+        3px -3px 0 black,
+       -3px 3px 0 black;
+       -webkit-text-stroke: 0.7px white;
+}
+
+.card .button {
+    padding: 10px 20px;
+    background-color: #d46159;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.card .button:hover {
+    background-color: #1a4b36;
+}
+h3
+{
+ font-family: 'Nightfall';  
+    font-size: 28px;
+    color: #FF5733;
+    text-shadow: 
+        2px 2px 0 white,
+       -2px -2px 0 #FF5733,
+        2px -2px 0 #FF5733,
+       -2px 2px 0 black;
+       -webkit-text-stroke: 0.7px #ff0f7b;
+       border-right: 30px;
+       margin-left: 20px;
+       margin-right: 80px;
+}
+@font-face {
+    font-family: 'Nightfall';
+    src: url('fonts/Nightfall.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Trends';
+    src: url('fonts/Trends.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+.categories-button {
+  --bg: #000;
+  --hover-bg: #1D3DF2;
+  --hover-text: #000;
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid var(--bg);
+  border-radius: 4px;
+  padding: 0.8em 2em;
+  background: var(--bg);
+  transition: 0.2s;
+
+}
+
+.categories-button:hover {
+  color: var(--hover-text);
+  transform: translate(-0.25rem, -0.25rem);
+  background: var(--hover-bg);
+  box-shadow: 0.25rem 0.25rem var(--bg);
+}
+
+.categories-button:active {
+  transform: translate(0);
+  box-shadow: none;
+}
+.categories-button2 {
+  --bg: #000;
+  --hover-bg: #1D3DF2;
+  --hover-text: #000;
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid var(--bg);
+  border-radius: 4px;
+  padding: 0.8em 2em;
+  background: var(--bg);
+  transition: 0.2s;
+  margin-right: 80px;
+text-decoration: none;
+}
+
+.categories-button2:hover {
+  color: var(--hover-text);
+  transform: translate(-0.25rem, -0.25rem);
+  background: var(--hover-bg);
+  box-shadow: 0.25rem 0.25rem var(--bg);
+}
+
+.categories-button2:active {
+  transform: translate(0);
+  box-shadow: none;
+}
+.button-view {
+  padding: 15px 20px;
+  border: none;
+  outline: none;
+  background-color: #151515;
+  color: #eee;
+  border-radius: 7px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease-out;
+}
+
+.button-view:hover {
+  transform: translateY(-3px);
+}
+
+.button-view-span {
+  color: #aaa;
+}
+.redes {
+  width: 220px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.redes a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  transition: all 0.2s ease-in-out;
+}
+
+.redes a svg {
+  width: 30px;
+  fill: #ffffff;
+}
+
+.redes .discord {
+  background-color: rgb(0, 60, 255);
+  border-radius: 0 0 10px 0;
+}
+
+.redes .instagram {
+  background: linear-gradient(45deg, #833ab4, #fd1d1d, #f56040);
+  border-radius: 0 10px 0 0;
+}
+
+.redes .github {
+  background-color: rgb(24, 22, 22);
+}
+
+.redes .twitter {
+  background-color: #000000;
+  border-radius: 0 10px 0 0;
+}
+
+.redes .facebook {
+  background-color: #006aff;
+}
+
+.redes a:hover {
+  width: 130%;
+  border-radius: 0 10px 10px 0;
+}
+a
+{
+text-decoration: none;
+color: white;
+}
