@@ -702,31 +702,23 @@ body.no-scroll {
 </head>
 <body>
     <!-- CCCCCCCCCCCCCCCCCCCCCCCCCUUUUUUUUUUUUUUUUUEEEEEEEEEEEEEEENTTTTTTTTTTTAAAAS -->
+<!-- Overlay with the forms -->
 <div class="overlay" id="overlay">
   <div class="form-container">
     <!-- Sign Up Form -->
     <form class="formAC" id="signupForm">
       <div class="titleAC">Welcome,<br><span>sign up to continue</span></div>
-      <input class="inputAC" name="email" placeholder="Email" type="email">
-      <input class="inputAC" name="password" placeholder="Password" type="password">
-      <div class="login-with">
-        <div class="buttonAC-log"><b>t</b></div>
-        <div class="buttonAC-log">
-          <!-- Íconos aquí -->
-        </div>
-        <div class="buttonAC-log">
-          <!-- Otro ícono -->
-        </div>
-      </div>
-      <button class="buttonAC-confirm">Let`s go →</button>
+      <input class="inputAC" id="signupEmail" name="email" placeholder="Email" type="email" required>
+      <input class="inputAC" id="signupPassword" name="password" placeholder="Password" type="password" required>
+      <button type="submit" class="buttonAC-confirm">Let's go →</button>
     </form>
 
     <!-- Sign In Form -->
     <form class="formAC" id="signinForm" style="display: none;">
       <div class="titleAC">Welcome back,<br><span>sign in to continue</span></div>
-      <input class="inputAC" name="email" placeholder="Email" type="email">
-      <input class="inputAC" name="password" placeholder="Password" type="password">
-      <button class="buttonAC-confirm">Sign In →</button>
+      <input class="inputAC" id="signinEmail" name="email" placeholder="Email" type="email" required>
+      <input class="inputAC" id="signinPassword" name="password" placeholder="Password" type="password" required>
+      <button type="submit" class="buttonAC-confirm">Sign In →</button>
     </form>
 
     <!-- Toggle between Sign Up and Sign In -->
@@ -736,26 +728,75 @@ body.no-scroll {
   </div>
 </div>
 
+<script type="text/javascript">
+// Initialize Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyBEfEuloKZWH5YuvHfvvioSC7WyZJlRlQ4",
+  authDomain: "merch-and-go.firebaseapp.com",
+  databaseURL: "https://merch-and-go-default-rtdb.firebaseio.com",
+  projectId: "merch-and-go",
+  storageBucket: "merch-and-go.firebasestorage.app",
+  messagingSenderId: "834848340768",
+  appId: "1:834848340768:web:ed3d0de86da132c05af545"
+};
 
-  <!-- Sign In Form -->
-  <form class="formAC" id="signinForm" style="display: none;">
-    <div class="titleAC">Welcome back,<br><span>sign in to continue</span></div>
-    <input class="inputAC" name="email" placeholder="Email" type="email">
-    <input class="inputAC" name="password" placeholder="Password" type="password">
-    <button class="buttonAC-confirm">Sign In →</button>
-  </form>
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
 
-  <!-- Toggle between Sign Up and Sign In -->
-  <div class="form-toggle">
-    <span id="toggleForm" class="buttonAC-confirm">Already have an account? Sign In</span>
-  </div>
-</div>
-    <script type="text/javascript">
+// Function to handle sign-up
+const signUp = (email, password) => {
+  auth.createUserWithEmailAndPassword(email, password)
+    .then(userCredential => {
+      console.log("User signed up:", userCredential.user);
+      closeOverlay();
+    })
+    .catch(error => {
+      console.error("Sign-up error:", error.message);
+      alert(error.message);
+    });
+};
+
+// Function to handle sign-in
+const signIn = (email, password) => {
+  auth.signInWithEmailAndPassword(email, password)
+    .then(userCredential => {
+      console.log("User signed in:", userCredential.user);
+      closeOverlay();
+    })
+    .catch(error => {
+      console.error("Sign-in error:", error.message);
+      alert(error.message);
+    });
+};
+
+// Function to close the overlay after sign-up/sign-in
+const closeOverlay = () => {
+  document.getElementById("overlay").style.display = "none";
+  document.body.classList.remove("no-scroll");
+};
+
+// Event listeners for form submission
+document.getElementById("signupForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  const email = document.getElementById("signupEmail").value;
+  const password = document.getElementById("signupPassword").value;
+  signUp(email, password);
+});
+
+document.getElementById("signinForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  const email = document.getElementById("signinEmail").value;
+  const password = document.getElementById("signinPassword").value;
+  signIn(email, password);
+});
+
+// Toggle between Sign Up and Sign In forms
 document.getElementById("toggleForm").addEventListener("click", function() {
-  var signupForm = document.getElementById("signupForm");
-  var signinForm = document.getElementById("signinForm");
+  const signupForm = document.getElementById("signupForm");
+  const signinForm = document.getElementById("signinForm");
 
-  // Alternar visibilidad
+  // Toggle visibility
   if (signupForm.style.display === "none") {
     signupForm.style.display = "block";
     signinForm.style.display = "none";
@@ -766,34 +807,12 @@ document.getElementById("toggleForm").addEventListener("click", function() {
     this.innerHTML = "Don't have an account? Sign Up";
   }
 });
-        // Asegurarse de que el formulario aparece al cargar
+
+// Ensure the form appears correctly and no scrolling
 document.addEventListener("DOMContentLoaded", function () {
-  // Evitar scroll en la página
   document.body.classList.add("no-scroll");
-
-  // Alternar entre los formularios de Sign Up y Sign In
-  document.getElementById("toggleForm").addEventListener("click", function () {
-    var signupForm = document.getElementById("signupForm");
-    var signinForm = document.getElementById("signinForm");
-
-    // Alternar visibilidad
-    if (signupForm.style.display === "none") {
-      signupForm.style.display = "block";
-      signinForm.style.display = "none";
-      this.innerHTML = "Already have an account? Sign In";
-    } else {
-      signupForm.style.display = "none";
-      signinForm.style.display = "block";
-      this.innerHTML = "Don't have an account? Sign Up";
-    }
-  });
-
-  // Opción para cerrar el formulario al completar el registro
-  document.querySelector(".buttonAC-confirm").addEventListener("click", function () {
-    document.getElementById("overlay").style.display = "none";
-    document.body.classList.remove("no-scroll");
-  });
 });
+</script>
 
     </script>
     
