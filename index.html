@@ -549,7 +549,7 @@ color: black;
   --bg-color: beige;
   --main-color: black;
   padding: 20px;
-    background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+  background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -561,7 +561,6 @@ color: black;
   width: 400px;
   height: 500px;
 }
-
 /* Resto del código igual */
 .titleAC {
   color: var(--font-color);
@@ -645,10 +644,10 @@ color: black;
 }
 .form-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row; /* Cambié esto para que los formularios se alineen horizontalmente */
   justify-content: center;
-  gap: 20px;
+  align-items: center;
+  gap: 40px; /* Espacio entre los dos formularios */
 }
 
 .form-toggle {
@@ -673,12 +672,12 @@ color: black;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.5); /* Oscurece el fondo */
-  backdrop-filter: blur(5px); /* Difumina el fondo */
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000; /* Asegura que esté encima de todo */
+  z-index: 1000;
 }
 
 /* Contenedor del formulario */
@@ -718,19 +717,20 @@ body.no-scroll {
     </form>
 
     <!-- Sign In Form -->
-    <form class="formAC" id="signinForm" style="display: none;">
+    <form class="formAC" id="signinForm">
       <div class="titleAC">Welcome back,<br><span>sign in to continue</span></div>
       <input class="inputAC" id="signinEmail" name="email" placeholder="Email" type="email" required>
       <input class="inputAC" id="signinPassword" name="password" placeholder="Password" type="password" required>
       <button type="submit" class="buttonAC-confirm">Sign In →</button>
     </form>
+  </div>
 
-    <!-- Toggle between Sign Up and Sign In -->
-    <div class="form-toggle">
-      <span id="toggleForm" class="buttonAC-confirm">Already have an account? Sign In</span>
-    </div>
+  <!-- Toggle between Sign Up and Sign In -->
+  <div class="form-toggle">
+    <span id="toggleForm" class="buttonAC-confirm">Already have an account? Sign In</span>
   </div>
 </div>
+
 
 <script type="text/javascript">
 // Initialize Firebase
@@ -800,11 +800,11 @@ document.getElementById("toggleForm").addEventListener("click", function() {
   const signupForm = document.getElementById("signupForm");
   const signinForm = document.getElementById("signinForm");
 
-  // Toggle visibility using class manipulation
+  // Toggle visibility using the hidden class
   signupForm.classList.toggle("hidden");
   signinForm.classList.toggle("hidden");
 
-  // Toggle the button text based on the current view
+  // Update the button text
   if (signupForm.classList.contains("hidden")) {
     this.innerHTML = "Don't have an account? Sign Up";
   } else {
@@ -812,10 +812,11 @@ document.getElementById("toggleForm").addEventListener("click", function() {
   }
 });
 
-// Ensure the form appears correctly and no scrolling
+// Ensure no scrolling when overlay is visible
 document.addEventListener("DOMContentLoaded", function () {
   document.body.classList.add("no-scroll");
 });
+
 </script>
     
 <!-- CCCCCCCCCCCCCCCCCCCCCCCCCUUUUUUUUUUUUUUUUUEEEEEEEEEEEEEEENTTTTTTTTTTTAAAAS -->
