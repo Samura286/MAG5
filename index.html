@@ -1449,6 +1449,8 @@ closeCartButton.addEventListener('click', () => {
 // Añadir al carrito
 addToCartButtons.forEach(button => {
     button.addEventListener('click', event => {
+        event.preventDefault(); // Evita que se recargue la página o salte al inicio
+        
         const productItem = event.target.closest('.product-item'); // Encuentra el contenedor del producto
         const productName = productItem.querySelector('.card__title').innerText; // Nombre del producto
         const productPrice = productItem.querySelector('.price').innerText; // Precio del producto
@@ -1464,6 +1466,8 @@ addToCartButtons.forEach(button => {
         };
 
         addToCart(product); // Añade el producto al carrito
+
+        cartModal.classList.remove('hidden'); // Muestra el carrito automáticamente
     });
 });
 
@@ -1498,46 +1502,12 @@ function renderCart() {
             <img src="${product.image}" alt="${product.name}">
             <div>
                 <p class ="PCart">${product.name}</p>
-                <pclass ="PCart">${product.price}</p>
-                <pclass ="PCart">Quantity: ${product.quantity}</p>
+                <p class ="PCart">${product.price}</p>
+                <p class ="PCart">Quantity: ${product.quantity}</p>
             </div>
             <button class="bin-button" onclick="removeFromCart(${product.id})">
-  <svg
-    class="bin-top"
-    viewBox="0 0 39 7"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <line y1="5" x2="39" y2="5" stroke="white" stroke-width="4"></line>
-    <line
-      x1="12"
-      y1="1.5"
-      x2="26.0357"
-      y2="1.5"
-      stroke="white"
-      stroke-width="3"
-    ></line>
-  </svg>
-  <svg
-    class="bin-bottom"
-    viewBox="0 0 33 39"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <mask id="path-1-inside-1_8_19" fill="white">
-      <path
-        d="M0 0H33V35C33 37.2091 31.2091 39 29 39H4C1.79086 39 0 37.2091 0 35V0Z"
-      ></path>
-    </mask>
-    <path
-      d="M0 0H33H0ZM37 35C37 39.4183 33.4183 43 29 43H4C-0.418278 43 -4 39.4183 -4 35H4H29H37ZM4 43C-0.418278 43 -4 39.4183 -4 35V0H4V35V43ZM37 0V35C37 39.4183 33.4183 43 29 43V35V0H37Z"
-      fill="white"
-      mask="url(#path-1-inside-1_8_19)"
-    ></path>
-    <path d="M12 6L12 29" stroke="white" stroke-width="4"></path>
-    <path d="M21 6V29" stroke="white" stroke-width="4"></path>
-  </svg>
-</button>
+                <!-- SVG del botón eliminar -->
+            </button>
         `;
 
         cartItemsContainer.appendChild(cartItem); // Añade el producto al DOM
