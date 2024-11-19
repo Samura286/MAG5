@@ -695,6 +695,10 @@ color: black;
 body.no-scroll {
   overflow: hidden;
 }
+        /* Ensure "hidden" class works for toggling visibility */
+.hidden {
+  display: none;
+}
         
  
 
@@ -796,15 +800,15 @@ document.getElementById("toggleForm").addEventListener("click", function() {
   const signupForm = document.getElementById("signupForm");
   const signinForm = document.getElementById("signinForm");
 
-  // Toggle visibility
-  if (signupForm.style.display === "none") {
-    signupForm.style.display = "block";
-    signinForm.style.display = "none";
-    this.innerHTML = "Already have an account? Sign In";
-  } else {
-    signupForm.style.display = "none";
-    signinForm.style.display = "block";
+  // Toggle visibility using class manipulation
+  signupForm.classList.toggle("hidden");
+  signinForm.classList.toggle("hidden");
+
+  // Toggle the button text based on the current view
+  if (signupForm.classList.contains("hidden")) {
     this.innerHTML = "Don't have an account? Sign Up";
+  } else {
+    this.innerHTML = "Already have an account? Sign In";
   }
 });
 
@@ -813,8 +817,6 @@ document.addEventListener("DOMContentLoaded", function () {
   document.body.classList.add("no-scroll");
 });
 </script>
-
-    </script>
     
 <!-- CCCCCCCCCCCCCCCCCCCCCCCCCUUUUUUUUUUUUUUUUUEEEEEEEEEEEEEEENTTTTTTTTTTTAAAAS -->
 <header>
