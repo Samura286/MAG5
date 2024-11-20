@@ -579,16 +579,17 @@ color: black;
 }
 /* Carrito */
 .cart-modal {
-    position: fixed; /* Se queda fijo en la pantalla */
-    top: 70px; /* Ajusta esto al tamaño de tu header */
-    right: 10px; /* Se pega al borde derecho con un margen */
+    position: fixed; /* Fija el carrito en la pantalla */
+    top: 70px; /* Ajusta esto a la altura de tu header */
+    right: 10px; /* Margen derecho */
     width: 300px; /* Ancho del carrito */
-    max-height: calc(100vh - 70px); /* No permite que se salga de la pantalla */
-    overflow-y: auto; /* Añade scroll si el contenido es muy largo */
-    background-color: white; /* Fondo para distinguirlo */
-    border: 1px solid #ccc; /* Borde opcional */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra opcional */
-    z-index: 1000; /* Por encima de otros elementos */
+    max-height: calc(100vh - 70px); /* Altura máxima visible debajo del header */
+    overflow-y: auto; /* Permite scroll si hay demasiados elementos */
+    background-color: white; /* Fondo blanco */
+    border: 1px solid #ccc; /* Borde */
+    border-radius: 8px; /* Bordes redondeados opcionales */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+    z-index: 1000; /* Asegura que el carrito esté sobre otros elementos */
 }
 
 .cart-modal.hidden {
