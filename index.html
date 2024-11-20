@@ -542,7 +542,41 @@ color: black;
   gap: 10px; /* Espaciado entre los botones */
   margin: 20px 0; /* Espaciado vertical adicional */
 }
+/* Opcional: estilos básicos para los modales y botones */
+.hidden {
+    display: none;
+}
 
+.cart-modal,
+.checkout-form-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    z-index: 1000;
+}
+
+.close-cart-button,
+.buy-button,
+.generate-invoice-button,
+.cancel-checkout-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.generate-invoice-button:hover,
+.cancel-checkout-button:hover,
+.close-cart-button:hover,
+.buy-button:hover {
+    background: #0056b3;
+}
         
  
 
