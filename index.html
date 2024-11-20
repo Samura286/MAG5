@@ -577,6 +577,130 @@ color: black;
 .buy-button:hover {
     background: #0056b3;
 }
+/* Carrito */
+.cart-modal {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 300px;
+    max-height: calc(100vh - 20px);
+    overflow-y: auto;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    z-index: 1000;
+}
+
+.cart-modal.hidden {
+    display: none;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.cart-item img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.PCart {
+    margin: 2px 0;
+}
+
+.close-cart-button, .buy-button {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.close-cart-button:hover, .buy-button:hover {
+    background-color: #0056b3;
+}
+
+/* Formulario de Checkout */
+.checkout-form-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 2000;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.checkout-form-modal.hidden {
+    display: none;
+}
+
+#checkout-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#checkout-form label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#checkout-form input {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.generate-invoice-button, .cancel-checkout-button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cancel-checkout-button {
+    background-color: #dc3545;
+}
+
+.generate-invoice-button:hover {
+    background-color: #218838;
+}
+
+.cancel-checkout-button:hover {
+    background-color: #c82333;
+}
+
+/* Detalles del carrito en el checkout */
+.cart-summary {
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}
+
+.cart-summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
         
  
 
@@ -1591,10 +1715,31 @@ function renderCart() {
     });
 }
 
-// Mostrar el formulario de checkout
+// Mostrar el formulario de checkout con resumen del carrito
 buyButton.addEventListener('click', () => {
     cartModal.classList.add('hidden'); // Oculta el carrito
     checkoutFormModal.classList.remove('hidden'); // Muestra el formulario de checkout
+
+    const cartSummary = document.createElement('div');
+    cartSummary.classList.add('cart-summary');
+    cartSummary.innerHTML = `
+        <h3>Resumen de Pedido</h3>
+        ${cart.map(item => `
+            <div class="cart-summary-item">
+                <span>${item.name} x${item.quantity}</span>
+                <span>${item.price}</span>
+            </div>
+        `).join('')}
+        <div class="cart-summary-item">
+            <strong>Total:</strong>
+            <strong>${cart.reduce((total, item) => total + (parseFloat(item.price.replace('$', '')) * item.quantity), 0).toFixed(2)} USD</strong>
+        </div>
+    `;
+
+    const form = document.getElementById('checkout-form');
+    const existingSummary = form.querySelector('.cart-summary');
+    if (existingSummary) existingSummary.remove(); // Elimina resumen previo si existe
+    form.appendChild(cartSummary); // Añade el nuevo resumen
 });
 
 // Cancelar el checkout
@@ -1627,6 +1772,7 @@ generateInvoiceButton.addEventListener('click', () => {
     renderCart(); // Actualiza el carrito vacío
     checkoutFormModal.classList.add('hidden'); // Oculta el formulario
 });
+
 </script>
 
 
