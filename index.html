@@ -1421,22 +1421,49 @@ color: black;
     </div>
 </div>
     </div>
-        <!-- Carrito -->
+<!-- Carrito -->
 <div id="cart-modal" class="cart-modal hidden">
     <h2>Your Cart</h2>
     <div id="cart-items" class="cart-items">
         <!-- Los productos se añadirán dinámicamente aquí -->
     </div>
     <button id="close-cart" class="close-cart-button">Close</button>
+    
+    <button id="buy-button" class="buy-button">Buy</button>
 </div>
-
+        <!-- Los productos se añadirán dinámicamente aquí -->
+    </div>
+    <button id="close-cart" class="close-cart-button">Close</button>
+    
+</div>
+<!-- Formulario de contacto -->
+<div id="checkout-form-modal" class="checkout-form-modal hidden">
+    <h2>Checkout</h2>
+    <form id="checkout-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required>
+        
+        <button type="button" id="generate-invoice" class="generate-invoice-button">Generate Invoice</button>
+        <button type="button" id="cancel-checkout" class="cancel-checkout-button">Cancel</button>
+    </form>
+</div>
     <script type="text/javascript">
-    // Variables
+// Variables
 const cartButton = document.querySelector('.categories-button2'); // Botón "Cart"
 const cartModal = document.getElementById('cart-modal'); // Modal del carrito
 const closeCartButton = document.getElementById('close-cart'); // Botón "Close"
 const cartItemsContainer = document.getElementById('cart-items'); // Contenedor de los productos
 const addToCartButtons = document.querySelectorAll('.button-view'); // Botones "Agregar al carrito"
+const buyButton = document.getElementById('buy-button'); // Botón "Buy"
+const checkoutFormModal = document.getElementById('checkout-form-modal'); // Modal del formulario
+const cancelCheckoutButton = document.getElementById('cancel-checkout'); // Botón "Cancel"
+const generateInvoiceButton = document.getElementById('generate-invoice'); // Botón "Generate Invoice"
 
 // Carrito
 let cart = [];
@@ -1510,7 +1537,19 @@ function renderCart() {
                 <p class ="PCart">Quantity: ${product.quantity}</p>
             </div>
             <button class="bin-button" onclick="removeFromCart(${product.id})">
-                <!-- SVG del botón eliminar -->
+                <!-- SVG del botón bin -->
+                <svg class="bin-top" viewBox="0 0 39 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line y1="5" x2="39" y2="5" stroke="white" stroke-width="4"></line>
+                    <line x1="12" y1="1.5" x2="26.0357" y2="1.5" stroke="white" stroke-width="3"></line>
+                </svg>
+                <svg class="bin-bottom" viewBox="0 0 33 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <mask id="path-1-inside-1_8_19" fill="white">
+                        <path d="M0 0H33V35C33 37.2091 31.2091 39 29 39H4C1.79086 39 0 37.2091 0 35V0Z"></path>
+                    </mask>
+                    <path d="M0 0H33H0ZM37 35C37 39.4183 33.4183 43 29 43H4C-0.418278 43 -4 39.4183 -4 35H4H29H37ZM4 43C-0.418278 43 -4 39.4183 -4 35V0H4V35V43ZM37 0V35C37 39.4183 33.4183 43 29 43V35V0H37Z" fill="white" mask="url(#path-1-inside-1_8_19)"></path>
+                    <path d="M12 6L12 29" stroke="white" stroke-width="4"></path>
+                    <path d="M21 6V29" stroke="white" stroke-width="4"></path>
+                </svg>
             </button>
         `;
 
@@ -1518,6 +1557,42 @@ function renderCart() {
     });
 }
 
+// Mostrar el formulario de checkout
+buyButton.addEventListener('click', () => {
+    cartModal.classList.add('hidden'); // Oculta el carrito
+    checkoutFormModal.classList.remove('hidden'); // Muestra el formulario de checkout
+});
+
+// Cancelar el checkout
+cancelCheckoutButton.addEventListener('click', () => {
+    checkoutFormModal.classList.add('hidden'); // Oculta el formulario de checkout
+    cartModal.classList.remove('hidden'); // Muestra el carrito nuevamente
+});
+
+// Generar factura
+generateInvoiceButton.addEventListener('click', () => {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+
+    if (!name || !email || !phone) {
+        alert('Please fill in all the fields.');
+        return;
+    }
+
+    // Generar factura
+    let invoice = `Invoice:
+    Name: ${name}
+    Email: ${email}
+    Phone: ${phone}
+    Items: 
+    ${cart.map(item => `${item.name} x${item.quantity} - ${item.price}`).join('\n')}`;
+
+    alert(invoice); // Muestra la factura
+    cart = []; // Vacía el carrito después de la compra
+    renderCart(); // Actualiza el carrito vacío
+    checkoutFormModal.classList.add('hidden'); // Oculta el formulario
+});
 </script>
 
 
